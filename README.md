@@ -29,6 +29,7 @@ For players:
 - Ability to save all of the above in order to come back for multiple sessions
 
 *Goals I hope to implement one day*
+
 Some of these are more ambitious than others, but these are just other features I think would be nice but are definitely not what I deem necessary (yet):
 - Calendars for Worlds (Holidays, maybe even lunar cycles, etc.)
 - Ability for GMs and players to get the same map. For now, my workaround is the notes page for players so that they can do the work themselves, but in the future I would love for players to be able to read the map the GM made for themselves
