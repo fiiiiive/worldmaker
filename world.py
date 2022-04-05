@@ -7,9 +7,10 @@ class World:
      
     def getDescript():
         print(f"Use Ctrl-D or Ctrl-Z ( windows ) to save {name}'s backstory.")
+        print(f"Enter {name}'s backstory below
         while True:
-        try:
-            line = input()
-        except EOFError:
-            break
+            try:
+                line = input()
+            except EOFError:
+                break
         descript.append(line)
