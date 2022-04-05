@@ -7,7 +7,7 @@ to cut back on paper a bit too.
 
 By the end I want this project to have the following:
 
-For GM:
+*For GM:*
 
 - Ability to create an Object called World that holds Regions, Landmarks, Enemies, and Notable Figures
 - Ability to create backstories/descriptions for Worlds, Regions, and Landmarks
@@ -18,7 +18,7 @@ For GM:
 - Ability to make all of the above optional. Should a place be barren of landmarks, flora, characters, etc. GMs should have the option to make it so
 - Finally, the ability to quickly access all of the above quickly. If the party is fighting a R.O.U.S. in Mordor, the GM should be able to open up a page on that enemy and place so they can accurately depict the story
 
-For players:
+*For players:*
 
 - Ability to create multiple characters (for multiple campaigns)
 - Ability to give characters backstories, stats, currency, and gear
@@ -28,9 +28,10 @@ For players:
 - Ability to access all of their gear, currency, stats page, etc. quickly and efficiently
 - Ability to save all of the above in order to come back for multiple sessions
 
-*Goals I hope to implement one day*
+*Goals I hope to implement one day:*
 
 Some of these are more ambitious than others, but these are just other features I think would be nice but are definitely not what I deem necessary (yet):
+
 - Calendars for Worlds (Holidays, maybe even lunar cycles, etc.)
 - Ability for GMs and players to get the same map. For now, my workaround is the notes page for players so that they can do the work themselves, but in the future I would love for players to be able to read the map the GM made for themselves
 - Ability for GMs and players to interact in real time
