@@ -1,3 +1,4 @@
+# Write abilities to characters file
 def ablts(name):
     f = open(f"{name}.txt", "a")
     
@@ -6,14 +7,31 @@ def ablts(name):
     while ability != '0':
         description = input("What does the ability do? ")
         description = description.capitalize()
-        f.write(f"*******************************\n{ability}:\n{description}\n\n")
+        f.write(f"\n*******************************\n{ability}:\n{description}\n\n")
         
         ability = input("What is the ability's name? (Enter \'0\' to exit): ")
         ability = ability.capitalize()
     
     f.close()
 
-def main():
+# Help Menu print
+def help():
+    # print help menu
+    print("Character creator is a way for you to make your own DND character and keep track of attributes, abilities, and other in game information.\n" +
+        "From the main menu you can use a list of commands such as:\n\n" +
+        "    * \'edit\': Create, edit, or delete existing characters. \n" +
+        "         - \'Create\' will write a new file using information on your character given by you\n" +
+        "         - \'Edit\' allows players to add or delete attributes or abilities to existing characters.\n" +
+        "         - \'Delete\' allows players to delete existing characters.\n\n" +
+        # add other commands here
+        "    * \'exit\': Exit the program.")
+    input("\n**********************************************************************************************************\nPress ENTER to return to the main menu")
+    main()
+
+# Edit characters 
+def edit():
+    # edit() code is old main() code for character
+
     name = input("What is the name of your character? ")
     name = name.capitalize()
     try:
@@ -32,11 +50,11 @@ def main():
     
         f = open(f"{name}.txt", "w")
     
-        f.write(f"{name}******************************\n")
+        f.write(f"{name}\n******************************\n")
         f.write(f"Age: {age}\n")
         f.write(f"Race: {race}\n")
         f.write(f"Class: {cls}")
-        f.write(f"******************************\nAbilities for {name}:\n")
+        f.write(f"\n******************************\nAbilities for {name}:\n")
         f.close()
     
     finally:
@@ -55,10 +73,29 @@ def main():
             ablts(name)
             exit()
 
-        
-        
+#def delete():
+    #delete code here 
 
+
+# Main Menu code
+def main():
+    cmd = input("Welcome to Character Creator! What would you like to do today? \nEnter \'help\' for more options.\n")
+    cmd = cmd.lower()
+    while cmd != "exit":
+        if cmd == "edit":
+            # edit() code is old main() code
+            edit()
+
+        elif cmd == "help":
+            # help() call here
+            help()
+
+        else:
+            # handle unknown commands
+            cmd = input(f"Unknown command \'{cmd}\'.\nPlease enter a command or use \'help\' for a list of commands")
     
+    exit()
 
+# Driver
 if __name__ == "__main__":
     main()
