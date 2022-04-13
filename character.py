@@ -1,3 +1,5 @@
+import os
+
 # Write abilities to characters file
 def ablts(name):
     f = open(f"{name}.txt", "a")
@@ -73,9 +75,9 @@ def edit():
             ablts(name)
             exit()
 
-#def delete():
-    #delete code here 
-
+def delete(name):
+    os.remove(f"{name}.txt")
+    return
 
 # Main Menu code
 def main():
@@ -89,7 +91,11 @@ def main():
         elif cmd == "help":
             # help() call here
             help()
-
+        elif cmd == "delete":
+            if os.path.exists(f"{name}.txt"):
+                delete(name)
+            else:
+                print("This file does not exist")
         else:
             # handle unknown commands
             cmd = input(f"Unknown command \'{cmd}\'.\nPlease enter a command or use \'help\' for a list of commands")
