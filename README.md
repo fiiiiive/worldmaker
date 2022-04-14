@@ -1,7 +1,7 @@
 # worldmaker
 A way for GMs and players to keep track of characters in DND
 
-Hello! My name is fiiiiive and I am trying to teach myself Python right now. My family and I have a pretty decent campaign going 
+Hello! My name is fiiiiive and I am trying to teach myself Python right now. My family and I have a pretty decent DND campaign going 
 and I thought it would be fun to code something to help my cousin, the GM, keep track of his notes, as well as a way for us players 
 to cut back on paper a bit too.
 
