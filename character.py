@@ -29,16 +29,13 @@ def assist():
     main()
 
 # Edit characters 
-def edit():
+def edit(name):
     # edit() code is old main() code for character
-
-    name = input("What is the name of your character? ")
-    name = name.capitalize()
     # open any existing file or make new character if file does not exist
     try:
         f = open(f"{name}.txt", "r")
-        print("Here is your character: ")
-        print(f.read())
+        print(f"{name} found")
+        f.close()
     except:
         print(f"Creating {name}...")
         age = int(input(f"\nWhat is {name}'s age? "))
@@ -59,14 +56,29 @@ def edit():
         f.close()
     
     finally:
-        choice = input("\nWould you like to add abilities at this time? ")
+        choice = input(f"\nWhat would you like to do with {name}? ")
         choice = choice.lower()
     
-        while choice[0] != 'n' and choice[0] != 'y':
-            print("Unknown answer")
-            choice = input("Would you like to add abilities at this time? ")
-            choice = choice.lower()
-    
+        while choice != "back":
+            # choices here. I'm thinking like 
+            # 'play': open an in-game menu where they can use character in real time 
+            # 'abilities': add or get rid of abilities
+            # 'see': reads player file and displays information
+            # 'assist': displays these commands for new users
+            # 'back': while loop above obviously gates this but its still want it to be an option 
+            if choice == "play":
+                # game(name) below
+                break
+            elif choice == "abilities":
+                ablts(name)
+                edit(name)
+            elif choice == 'see':
+                # Above code already confirms that the file exists. reading it 
+                f = open(f"{name}.txt", "r")
+                print(f.read())
+            else:
+                choice = input("Invalid choice. Enter your command or enter \'assist\' for more options ")
+                
     
         if choice[0] == 'n':
             main()
@@ -87,11 +99,15 @@ def menu():
         if cmd == "edit":
             # edit() code is old main() code
             # handles character creation and editing
-            edit()
+            # code from edit() moved here to avoid redundancy when edit() is called multiple times
+            
+            name = input("What is the name of your character? ")
+            name = name.capitalize()
+            edit(name)
         
-        elif cmd == "help":
+        elif cmd == "assist":
             # help() call here
-            help()
+            assist()
         elif cmd == "delete":
             name = input("What character would you like to delete? ")
             if os.path.exists(f"{name}.txt"):
@@ -100,10 +116,15 @@ def menu():
                 print("This file does not exist")
         else:
             # handle unknown commands
-            cmd = input(f"Unknown command \'{cmd}\'.\nPlease enter a command or use \'help\' for a list of commands")
+            cmd = input(f"Unknown command \'{cmd}\'.\nPlease enter a command or use \'assist\' for a list of commands")
     
     exit()
 def main():
+    
+    # I don't want the user to constantly be welcomed every time they finish 
+    # creating/editing/deleting so I wanted to add this to keep to one time 
+    # only. Menu() is the main code that I want to be looping through for continued use. 
+    
     print("**************************************************\n\n" + 
         "          Welcome to Character Creator!\n\n" +
         "**************************************************\n")
