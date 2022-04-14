@@ -17,14 +17,12 @@ def ablts(name):
     f.close()
 
 # Help Menu print
-def help():
+def assist():
     # print help menu
     print("Character creator is a way for you to make your own DND character and keep track of attributes, abilities, and other in game information.\n" +
         "From the main menu you can use a list of commands such as:\n\n" +
-        "    * \'edit\': Create, edit, or delete existing characters. \n" +
-        "         - \'Create\' will write a new file using information on your character given by you\n" +
-        "         - \'Edit\' allows players to add or delete attributes or abilities to existing characters.\n" +
-        "         - \'Delete\' allows players to delete existing characters.\n\n" +
+        "    * \'edit\': Create or edit existing characters. \n\n" +
+        "    * \'delete\': Delete existing characters.\n\n" +
         # add other commands here
         "    * \'exit\': Exit the program.")
     input("\n**********************************************************************************************************\nPress ENTER to return to the main menu")
@@ -36,18 +34,19 @@ def edit():
 
     name = input("What is the name of your character? ")
     name = name.capitalize()
+    # open any existing file or make new character if file does not exist
     try:
         f = open(f"{name}.txt", "r")
         print("Here is your character: ")
         print(f.read())
     except:
-        
-        age = int(input("\nWhat is " + name + "'s age? "))
+        print(f"Creating {name}...")
+        age = int(input(f"\nWhat is {name}'s age? "))
     
-        race = input("\nWhat is " + name + "'s race? ")
+        race = input(f"\nWhat is {name}'s race? ")
         race = race.capitalize()
     
-        cls = input("\nWhat is " + name + "'s class? ")
+        cls = input(f"\nWhat is {name}'s class? ")
         cls = cls.capitalize()
     
         f = open(f"{name}.txt", "w")
@@ -70,25 +69,26 @@ def edit():
     
     
         if choice[0] == 'n':
-            exit()
+            main()
         else:
             ablts(name)
-            exit()
+            main()
 
 def delete(name):
     os.remove(f"{name}.txt")
     print("Deleted")
     main()
 
-# Main Menu code
-def main():
-    cmd = input("Welcome to Character Creator! What would you like to do today? \nEnter \'help\' for more options.\n")
+# menu() code main function of the code
+def menu():
+    cmd = input("What would you like to do today? \nEnter \'help\' for more options.\n")
     cmd = cmd.lower()
     while cmd != "exit":
         if cmd == "edit":
             # edit() code is old main() code
+            # handles character creation and editing
             edit()
-
+        
         elif cmd == "help":
             # help() call here
             help()
@@ -103,7 +103,12 @@ def main():
             cmd = input(f"Unknown command \'{cmd}\'.\nPlease enter a command or use \'help\' for a list of commands")
     
     exit()
-
+def main():
+    print("**************************************************\n\n" + 
+        "          Welcome to Character Creator!\n\n" +
+        "**************************************************\n")
+    menu()
+    
 # Driver
 if __name__ == "__main__":
     main()
