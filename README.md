@@ -28,7 +28,7 @@ By the end I want this project to have the following:
 - Ability to access all of their gear, currency, stats page, etc. quickly and efficiently
 - Ability to save all of the above in order to come back for multiple sessions
 
-*Goals I hope to implement one day:*
+## Goals I hope to implement one day:
 
 Some of these are more ambitious than others, but these are just other features I think would be nice but are definitely not what I deem necessary (yet):
 
