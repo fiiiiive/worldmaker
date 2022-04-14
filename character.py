@@ -17,16 +17,27 @@ def ablts(name):
     f.close()
 
 # Help Menu print
-def assist():
-    # print help menu
-    print("Character creator is a way for you to make your own DND character and keep track of attributes, abilities, and other in game information.\n" +
-        "From the main menu you can use a list of commands such as:\n\n" +
-        "    * \'edit\': Create or edit existing characters. \n\n" +
-        "    * \'delete\': Delete existing characters.\n\n" +
-        # add other commands here
-        "    * \'exit\': Exit the program.")
-    input("\n**********************************************************************************************************\nPress ENTER to return to the main menu")
-    main()
+def assist(page):
+    # print assist menu for separate pages. Each section of code will call its version of the menu
+    # main menu
+    print("Character creator is a way for you to make your own DND character and keep track of attributes, abilities, and other in game information.\n")
+    if page == "menu":
+        print(page.upper() + "\n**********************************************************************************************************")
+        print("From the main menu you can use a list of commands such as:\n\n" +
+            "    * \'edit\': Create or edit existing characters. \n\n" +
+            "    * \'delete\': Delete existing characters.\n\n" +
+            # add other commands here
+            "    * \'exit\': Exit the program.")
+            menu()
+    elif page == "edit":
+        print(page.upper())
+        print("The edit page is a way for you to edit your DND characters with commands like:\n\n" +
+            "    * \'play\': Open the in-game menu to play a campaign\n\n" +
+            "    * \'abilities\': Add or delete abilities from your character\n\n" +
+            "    * \'see\': Open your character's profile and see their description\n\n" +
+            "    * \'back\': Go back to the main menu to select a different character or exit.")
+        input("\n**********************************************************************************************************\nPress ENTER to return to the main menu")
+        edit()
 
 # Edit characters 
 def edit(name):
@@ -76,6 +87,8 @@ def edit(name):
                 # Above code already confirms that the file exists. reading it 
                 f = open(f"{name}.txt", "r")
                 print(f.read())
+            elif choice == 'assist':
+                assist("edit")
             else:
                 choice = input("Invalid choice. Enter your command or enter \'assist\' for more options ")
                 
@@ -106,8 +119,8 @@ def menu():
             edit(name)
         
         elif cmd == "assist":
-            # help() call here
-            assist()
+            # assist() call here
+            assist("menu")
         elif cmd == "delete":
             name = input("What character would you like to delete? ")
             if os.path.exists(f"{name}.txt"):
