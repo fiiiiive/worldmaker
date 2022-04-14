@@ -77,7 +77,8 @@ def edit():
 
 def delete(name):
     os.remove(f"{name}.txt")
-    return
+    print("Deleted")
+    main()
 
 # Main Menu code
 def main():
@@ -92,6 +93,7 @@ def main():
             # help() call here
             help()
         elif cmd == "delete":
+            name = input("What character would you like to delete? ")
             if os.path.exists(f"{name}.txt"):
                 delete(name)
             else:
