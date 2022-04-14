@@ -1,5 +1,0 @@
-Fiv******************************
-Age: 20
-Race: Human
-Class: Warlock******************************
-Abilities for Fiv:
