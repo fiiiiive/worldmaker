@@ -21,29 +21,29 @@ def ablts(name):
 def assist(page, name):
     os.system("clear")
     # print assist menu for separate pages. Each section of code will call its version of the menu
-    # main menu. Added name parameter so that you can return to 'edit' instead of having to go all the way back to menu()
+    # main menu. Added name parameter so that you can return to charac() instead of having to go all the way back to menu()
     print("Character creator is a way for you to make your own DND character and keep track of attributes, abilities, and other in game information.\n")
     if page == "menu":
         print(page.upper())
         print("From the main menu you can use a list of commands such as:\n\n" +
-            "    * \'edit\': Create or edit existing characters. \n\n" +
+            "    * \'character\': Create, edit, or play a campaign with existing characters. \n\n" +
             "    * \'delete\': Delete existing characters.\n\n" +
             # add other commands here
             "    * \'exit\': Exit the program.")
             menu()
-    elif page == "edit":
+    elif page == "character":
         print(page.upper())
-        print("The edit page is a way for you to edit your DND characters with commands like:\n\n" +
+        print("The Character page is a way for you to interact with your DND characters with commands like:\n\n" +
             "    * \'play\': Open the in-game menu to play a campaign\n\n" +
             "    * \'abilities\': Add or delete abilities from your character\n\n" +
             "    * \'see\': Open your character's profile and see their description\n\n" +
             "    * \'back\': Go back to the main menu to select a different character or exit.")
         input("\n**********************************************************************************************************\nPress ENTER to return to the main menu")
-        edit()
+        charac()
 
 # Edit characters 
-def edit(name):
-    # edit() code is old main() code for character
+def charac(name):
+    # charac() code is old main() code for character
     # open any existing file or make new character if file does not exist
     try:
         f = open(f"{name}.txt", "r")
@@ -84,15 +84,15 @@ def edit(name):
                 break
             elif choice == "abilities":
                 ablts(name)
-                edit(name)
+                charac(name)
             elif choice == 'see':
                 # Above code already confirms that the file exists. reading it 
                 f = open(f"{name}.txt", "r")
                 print(f.read())
                 input("Press ENTER to return")
-                edit(name)
+                charac(name)
             elif choice == 'assist':
-                assist("edit", name)
+                assist("charac", name)
             else:
                 choice = input("Invalid choice. Enter your command or enter \'assist\' for more options ")
                 
@@ -111,14 +111,14 @@ def menu():
     cmd = input("What would you like to do today? \nEnter \'assist\' for more options.\n")
     cmd = cmd.lower()
     while cmd != "exit":
-        if cmd == "edit":
-            # edit() code is old main() code
+        if cmd == "charac":
+            # charac() code is old main() code
             # handles character creation and editing
-            # code from edit() moved here to avoid redundancy when edit() is called multiple times
+            # code from charac() moved here to avoid redundancy when charac() is called multiple times
             
             name = input("What is the name of your character? ")
             name = name.capitalize()
-            edit(name)
+            charac(name)
         
         elif cmd == "assist":
             # assist() call here
