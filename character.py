@@ -106,7 +106,7 @@ def delete(name):
 
 # menu() code main function of the code
 def menu():
-    cmd = input("What would you like to do today? \nEnter \'help\' for more options.\n")
+    cmd = input("What would you like to do today? \nEnter \'assist\' for more options.\n")
     cmd = cmd.lower()
     while cmd != "exit":
         if cmd == "edit":
