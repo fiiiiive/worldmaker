@@ -2,6 +2,7 @@ import os
 
 # Write abilities to characters file
 def ablts(name):
+    os.system("clear")
     f = open(f"{name}.txt", "a")
     
     ability = input("What is the ability's name? (Enter \'0\' to exit): ")
@@ -17,12 +18,13 @@ def ablts(name):
     f.close()
 
 # Help Menu print
-def assist(page):
+def assist(page, name):
+    os.system("clear")
     # print assist menu for separate pages. Each section of code will call its version of the menu
-    # main menu
+    # main menu. Added name parameter so that you can return to 'edit' instead of having to go all the way back to menu()
     print("Character creator is a way for you to make your own DND character and keep track of attributes, abilities, and other in game information.\n")
     if page == "menu":
-        print(page.upper() + "\n**********************************************************************************************************")
+        print(page.upper())
         print("From the main menu you can use a list of commands such as:\n\n" +
             "    * \'edit\': Create or edit existing characters. \n\n" +
             "    * \'delete\': Delete existing characters.\n\n" +
@@ -78,7 +80,7 @@ def edit(name):
             # 'assist': displays these commands for new users
             # 'back': while loop above obviously gates this but its still want it to be an option 
             if choice == "play":
-                # game(name) below
+                # game(name) below probably will fall under another file
                 break
             elif choice == "abilities":
                 ablts(name)
@@ -87,25 +89,25 @@ def edit(name):
                 # Above code already confirms that the file exists. reading it 
                 f = open(f"{name}.txt", "r")
                 print(f.read())
+                input("Press ENTER to return")
+                edit(name)
             elif choice == 'assist':
-                assist("edit")
+                assist("edit", name)
             else:
                 choice = input("Invalid choice. Enter your command or enter \'assist\' for more options ")
                 
-    
-        if choice[0] == 'n':
-            main()
-        else:
-            ablts(name)
-            main()
+        # After typing 'back' go to the menu
+        menu()
 
 def delete(name):
+    os.system("clear")
     os.remove(f"{name}.txt")
-    print("Deleted")
+    print(f"{name} has been deleted")
     main()
 
 # menu() code main function of the code
 def menu():
+    os.system("clear")
     cmd = input("What would you like to do today? \nEnter \'assist\' for more options.\n")
     cmd = cmd.lower()
     while cmd != "exit":
@@ -120,7 +122,7 @@ def menu():
         
         elif cmd == "assist":
             # assist() call here
-            assist("menu")
+            assist("menu", "fiiiiive")
         elif cmd == "delete":
             name = input("What character would you like to delete? ")
             if os.path.exists(f"{name}.txt"):
