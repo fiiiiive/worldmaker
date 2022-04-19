@@ -1,21 +1,25 @@
 import os
+import json
 
 # Write abilities to characters file
+# using JSON for characters now 
 def ablts(name):
     os.system("clear")
-    f = open(f"{name}.txt", "a")
-    
+    x = dict()
+    y = list()
     ability = input("What is the ability's name? (Enter \'0\' to exit): ")
     ability = ability.capitalize()
     while ability != '0':
         description = input("What does the ability do? ")
         description = description.capitalize()
-        f.write(f"\n*******************************\n{ability}:\n{description}\n\n")
-        
+        x[ability] = description
+        y.append(x)
         ability = input("What is the ability's name? (Enter \'0\' to exit): ")
         ability = ability.capitalize()
     
-    f.close()
+    z = json.dumps(y)
+    with open(f"{name}.json", "a") as outfile:
+        json.dump(z, outfile)
 
 # Help Menu print
 def assist(page, name):
@@ -56,17 +60,17 @@ def charac(name):
         race = input(f"\nWhat is {name}'s race? ")
         race = race.capitalize()
     
-        cls = input(f"\nWhat is {name}'s class? ")
-        cls = cls.capitalize()
+        ech = input(f"\nWhat is {name}'s class? ")
+        ech = ech.capitalize()
     
-        f = open(f"{name}.txt", "w")
-    
-        f.write(f"{name}\n******************************\n")
-        f.write(f"Age: {age}\n")
-        f.write(f"Race: {race}\n")
-        f.write(f"Class: {cls}")
-        f.write(f"\n******************************\nAbilities for {name}:\n")
-        f.close()
+        x = {
+            "Name" : name,
+            "Age" : age,
+            "Race" : race,
+            "Class" : ech,
+        }
+        with open(f"{name}.json", "w") as outfile:
+            json.dump(x, outfile)
     
     finally:
         choice = input(f"\nWhat would you like to do with {name}? ")
