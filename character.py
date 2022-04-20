@@ -50,7 +50,7 @@ def charac(name):
     # charac() code is old main() code for character
     # open any existing file or make new character if file does not exist
     try:
-        f = open(f"{name}.txt", "r")
+        f = open(f"{name}.json", "r")
         print(f"{name} found")
         f.close()
     except:
@@ -91,7 +91,7 @@ def charac(name):
                 charac(name)
             elif choice == 'see':
                 # Above code already confirms that the file exists. reading it 
-                f = open(f"{name}.txt", "r")
+                f = open(f"{name}.json", "r")
                 print(f.read())
                 input("Press ENTER to return")
                 charac(name)
@@ -105,7 +105,7 @@ def charac(name):
 
 def delete(name):
     os.system("clear")
-    os.remove(f"{name}.txt")
+    os.remove(f"{name}.json")
     print(f"{name} has been deleted")
     main()
 
@@ -129,7 +129,7 @@ def menu():
             assist("menu", "fiiiiive")
         elif cmd == "delete":
             name = input("What character would you like to delete? ")
-            if os.path.exists(f"{name}.txt"):
+            if os.path.exists(f"{name}.json"):
                 delete(name)
             else:
                 print("This file does not exist")
