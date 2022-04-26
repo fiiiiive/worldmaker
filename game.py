@@ -13,9 +13,13 @@ ones is a maybe at this point)
 **** note: after further investigation with how to python reads jsons and how I can get them to read what I want, I think I want to just call a bunch of get() 
 functions for attributes/gold/hp/skills list. 
 '''
-def refresh():
+import os
+import json
+
+def main(name):
     # ^name subject to change. Functions are to: open {name}.json, read json materials and collect input to call other methods. Did some testing,
-    # saving my work on onlineGDB in case I need to refer back. Can pass lists of dicts as arguments through methods. Very helpful
+    # saving my work on onlineGDB in case I need to refer back. Can pass lists of dicts as arguments through methods. Very helpful. 
+    # No fancy menu to signify game start, will prob just jump in here.
     
 def getHP():
     # should be easy as HP is a standalone attribute
@@ -28,3 +32,6 @@ def getSkillList():
     
 def getGold():
     #similar to HP should be easy as it is standalone. 
+
+if __name__ == "__main__":
+    main(name)
