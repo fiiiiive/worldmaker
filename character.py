@@ -4,7 +4,7 @@ import json
 # Write abilities to characters file
 # using JSON for characters now 
 def ablts(name):
-    os.system("clear")
+    os.system("cls")
     x = dict()
     y = list()
     ability = input("What is the ability's name? (Enter \'0\' to exit): ")
@@ -13,17 +13,16 @@ def ablts(name):
         description = input("What does the ability do? ")
         description = description.capitalize()
         x[ability] = description
-        y.append(x)
         ability = input("What is the ability's name? (Enter \'0\' to exit): ")
         ability = ability.capitalize()
-    
+    y.append(x)
     z = json.dumps(y)
     with open(f"{name}.json", "a") as outfile:
         json.dump(z, outfile)
 
 # Help Menu print
 def assist(page, name):
-    os.system("clear")
+    os.system("cls")
     # print assist menu for separate pages. Each section of code will call its version of the menu
     # main menu. Added name parameter so that you can return to charac() instead of having to go all the way back to menu()
     print("Character creator is a way for you to make your own DND character and keep track of attributes, abilities, and other in game information.\n")
@@ -34,16 +33,19 @@ def assist(page, name):
             "    * \'delete\': Delete existing characters.\n\n" +
             # add other commands here
             "    * \'exit\': Exit the program.")
-            menu()
+        input("\n**********************************************************************************************************\nPress ENTER to return to the main menu ")
+        os.system("cls")
+        menu()
     elif page == "character":
         print(page.upper())
-        print("The Character page is a way for you to interact with your DND characters with commands like:\n\n" +
-            "    * \'play\': Open the in-game menu to play a campaign\n\n" +
-            "    * \'abilities\': Add or delete abilities from your character\n\n" +
-            "    * \'see\': Open your character's profile and see their description\n\n" +
-            "    * \'back\': Go back to the main menu to select a different character or exit.")
-        input("\n**********************************************************************************************************\nPress ENTER to return to the main menu")
-        charac()
+        print("The Character page is a way for you to interact with your DND characters with commands like:\n\n")
+        print("    * \'play\': Open the in-game menu to play as {}\n\n".format(name))
+        print("    * \'abilities\': Add or delete abilities from {}\n\n".format(name))
+        print("    * \'see\': Open {}'s profile and see their description\n\n".format(name))
+        print("    * \'back\': Go back to the main menu to select a different character or exit.")
+        input("\n**********************************************************************************************************\nPress ENTER to return to the main menu ")
+    os.system("cls")
+    charac(name)
 
 # Edit characters 
 def charac(name):
@@ -73,7 +75,7 @@ def charac(name):
             json.dump(x, outfile)
     
     finally:
-        choice = input(f"\nWhat would you like to do with {name}? ")
+        choice = input(f"\nWhat would you like to do with {name}? (Enter \'assist\' for more options)")
         choice = choice.lower()
     
         while choice != "back":
@@ -94,28 +96,30 @@ def charac(name):
                 f = open(f"{name}.json", "r")
                 print(f.read())
                 input("Press ENTER to return")
+                os.system("cls")
                 charac(name)
             elif choice == 'assist':
-                assist("charac", name)
+                assist("character", name)
             else:
                 choice = input("Invalid choice. Enter your command or enter \'assist\' for more options ")
-                
+        os.system("cls")        
         # After typing 'back' go to the menu
         menu()
 
 def delete(name):
-    os.system("clear")
+    os.system("cls")
     os.remove(f"{name}.json")
     print(f"{name} has been deleted")
+    os.system("cls")
     main()
 
 # menu() code main function of the code
 def menu():
-    os.system("clear")
+    
     cmd = input("What would you like to do today? \nEnter \'assist\' for more options.\n")
     cmd = cmd.lower()
     while cmd != "exit":
-        if cmd == "charac":
+        if cmd == "character":
             # charac() code is old main() code
             # handles character creation and editing
             # code from charac() moved here to avoid redundancy when charac() is called multiple times
@@ -129,17 +133,19 @@ def menu():
             assist("menu", "fiiiiive")
         elif cmd == "delete":
             name = input("What character would you like to delete? ")
+            if name == "back":
+                menu()
             if os.path.exists(f"{name}.json"):
                 delete(name)
             else:
                 print("This file does not exist")
         else:
             # handle unknown commands
-            cmd = input(f"Unknown command \'{cmd}\'.\nPlease enter a command or use \'assist\' for a list of commands")
+            cmd = input(f"Unknown command \'{cmd}\'.\nPlease enter a command or use \'assist\' for a list of commands\n")
     
     exit()
 def main():
-    
+    os.system("cls")
     # I don't want the user to constantly be welcomed every time they finish 
     # creating/editing/deleting so I wanted to add this to keep to one time 
     # only. Menu() is the main code that I want to be looping through for continued use. 
