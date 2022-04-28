@@ -71,9 +71,27 @@ def charac(name):
             "Race" : race,
             "Class" : ech,
         }
+
+        os.system("cls")
+        print(f"Now please enter attributes for {name}.")
+        st = input("Strength (STR): ")
+        co = input("Constitution (CON): ")
+        de = input("Dexterity (DEX): ")
+        it = input("Intelligence (INT): ")
+        wi = input("Wisdom (WIS): ")
+        ch = input("Charisma (CHA): ")
+        
+        x.append("STR" : st,
+                 "CON" : co,
+                 "DEX" : de,
+                 "INT" : it,
+                 "WIS" : wi,
+                 "CHA" : ch,
+                )
+        
         with open(f"{name}.json", "w") as outfile:
             json.dump(x, outfile)
-    
+        
     finally:
         choice = input(f"\nWhat would you like to do with {name}? (Enter \'assist\' for more options)")
         choice = choice.lower()
