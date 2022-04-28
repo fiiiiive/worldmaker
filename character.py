@@ -93,7 +93,7 @@ def charac(name):
             json.dump(x, outfile)
         
     finally:
-        choice = input(f"\nWhat would you like to do with {name}? (Enter \'assist\' for more options)")
+        choice = input(f"\nWhat would you like to do with {name}? (Enter \'assist\' for more options) ")
         choice = choice.lower()
     
         while choice != "back":
@@ -112,7 +112,16 @@ def charac(name):
             elif choice == 'see':
                 # Above code already confirms that the file exists. reading it 
                 f = open(f"{name}.json", "r")
-                print(f.read())
+                print(f"Name: {name}")
+                print(f"Age: {age}")
+                print(f"Race: {race}")
+                print(f"Class: {ech}")
+                print(f"STR: {st}")
+                print(f"CON: {co}")
+                print(f"DEX: {de}")
+                print(f"INT: {it}")
+                print(f"WIS: {wi}")
+                print(f"CHA: {ch}")
                 input("Press ENTER to return")
                 os.system("cls")
                 charac(name)
