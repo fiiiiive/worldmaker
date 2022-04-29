@@ -81,13 +81,16 @@ def charac(name):
         wi = input("Wisdom (WIS): ")
         ch = input("Charisma (CHA): ")
         
-        x.append("STR" : st,
-                 "CON" : co,
-                 "DEX" : de,
-                 "INT" : it,
-                 "WIS" : wi,
-                 "CHA" : ch,
-                )
+        max = hp = input("Max HP: ")
+        
+        x[maxHP] = hp
+        x["STR"] = st
+        x["CON"] = co
+        x["DEX"] = de
+        x["INT"] = it
+        x["WIS"] = wi
+        x["CHA"] = ch
+        
         
         with open(f"{name}.json", "w") as outfile:
             json.dump(x, outfile)
@@ -116,6 +119,7 @@ def charac(name):
                 print(f"Age: {age}")
                 print(f"Race: {race}", end="            ")
                 print(f"Class: {ech}")
+                print(f"HP: {hp} / {maxHP}\n")
                 print("Attributes\n**********************************************************************************************************\n")
                 print(f"STR: {st}", end="            ")
                 print(f"CON: {co}")
