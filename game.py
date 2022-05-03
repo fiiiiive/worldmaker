@@ -16,10 +16,13 @@ functions for attributes/gold/hp/skills list.
 import os
 import json
 
-def main(name):
+def run(name):
     # ^name subject to change. Functions are to: open {name}.json, read json materials and collect input to call other methods. Did some testing,
     # saving my work on onlineGDB in case I need to refer back. Can pass lists of dicts as arguments through methods. Very helpful. 
     # No fancy menu to signify game start, will prob just jump in here.
+    f = open(f"{name}.json")
+    data = json.load(f)
+    
     
 def getHP():
     # should be easy as HP is a standalone attribute
